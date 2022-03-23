@@ -8,7 +8,8 @@
 
 import React from 'react';
 import type {Node} from 'react';
-
+import {BusinessInfoCard} from './src/components/features/businesses/components/business-info-card.styles';
+import AppNavigator from './src/infrastructure/navigation/app.navigator';
 import {
   SafeAreaView,
   ScrollView,
@@ -30,26 +31,27 @@ import {
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    // <View style={styles.sectionContainer}>
+    //   <Text
+    //     style={[
+    //       styles.sectionTitle,
+    //       {
+    //         color: isDarkMode ? Colors.white : Colors.black,
+    //       },
+    //     ]}>
+    //     {title}
+    //   </Text>
+    //   <Text
+    //     style={[
+    //       styles.sectionDescription,
+    //       {
+    //         color: isDarkMode ? Colors.light : Colors.dark,
+    //       },
+    //     ]}>
+    //     {children}
+    //   </Text>
+    <AppNavigator />
+    // {/* </View> */}
   );
 };
 
@@ -67,6 +69,7 @@ const App: () => Node = () => {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+        <BusinessInfoCard />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
