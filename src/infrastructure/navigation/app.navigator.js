@@ -3,6 +3,7 @@ import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import BusinessCard from '../../components/features/businesses/components/business-info-card.component';
+import {BusinessScreen} from '../../components/features/businesses/screens/business.screen';
 
 const HomeScreen = () => {
   return (
@@ -36,7 +37,7 @@ const AppNavigator = () => {
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Another Screen" component={BusinessCard} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Settings" component={BusinessScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
