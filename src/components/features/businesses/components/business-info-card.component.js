@@ -18,18 +18,32 @@ const BusinessCard = ({business = {}}) => {
   Ionicons.loadFont().then();
 
   return (
-    <Card>
-      <Text style={{backgroundColor: 'powderblue'}}>{name}</Text>
-      <Card.Cover source={{uri: image}} style={{height: 300}} />
-      <Text>{address}</Text>
-      {/* <FontAwesome5 name={'paw'} /> */}
-      <View style={{flexDirection: 'row'}}>
-        {ratingArray.map((_, i) => (
-          <Ionicons
-            name={'paw'}
-            style={{color: 'orange', fontSize: 20, padding: 1}}
+    <Card
+      style={{
+        backgroundColor: 'black',
+      }}>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View style={{alignItems: 'baseline', margin: 'auto'}}>
+          <Text style={{color: 'white', fontSize: 25}}>{name}</Text>
+          <Card.Cover
+            source={{uri: image}}
+            style={{minWidth: '90%', borderRadius: 10}}
           />
-        ))}
+          <Text style={{color: 'white', fontSize: 15}}>{address}</Text>
+          {/* <FontAwesome5 name={'paw'} /> */}
+          <View style={{flexDirection: 'row'}}>
+            {ratingArray.map((_, i) => (
+              <Ionicons
+                name={'paw'}
+                style={{color: 'orange', fontSize: 20, padding: 1}}
+              />
+            ))}
+          </View>
+        </View>
       </View>
     </Card>
   );

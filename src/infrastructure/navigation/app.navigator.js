@@ -7,7 +7,11 @@ import {BusinessScreen} from '../../components/features/businesses/screens/busin
 
 const HomeScreen = () => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: 'black',
+      }}>
       <Text>Home Screen</Text>
     </View>
   );
@@ -15,7 +19,7 @@ const HomeScreen = () => {
 
 const AnotherScreen = () => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <View>
       <Text>Restuarant Card Test screen</Text>
     </View>
   );
@@ -23,7 +27,7 @@ const AnotherScreen = () => {
 
 const SettingsScreen = () => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <View>
       <Text>Setting Screen</Text>
     </View>
   );
@@ -34,6 +38,7 @@ const Tab = createBottomTabNavigator();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
+      {/* screenOptions={{cardStyle: {backgroundColor: 'black'}}}> */}
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Another Screen" component={BusinessCard} />
