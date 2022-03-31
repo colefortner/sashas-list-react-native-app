@@ -33,7 +33,7 @@ const BusinessCard = ({business = {}}) => {
             source={{uri: image}}
             style={{minWidth: '90%', borderRadius: 10}}
           />
-          <Text style={{color: 'white', fontSize: 15}}>{address}</Text>
+          <Text style={{color: 'white', fontSize: 15}}>{address.street}</Text>
           {/* <FontAwesome5 name={'paw'} /> */}
           <View style={{flexDirection: 'row'}}>
             {ratingArray.map((_, i) => (
