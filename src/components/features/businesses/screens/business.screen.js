@@ -1,12 +1,12 @@
 import React from 'react';
 
 import {SafeAreaView, Text, View, useWindowDimensions} from 'react-native';
-import {FlatList} from 'react-native';
+import {FlatList, TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
 import {StyleSheet} from 'react-native';
 import {businesses} from '../../../../infrastructure/mock-data/business-mock-data';
 
-import BusinessInfoCard from '../components/business-info-card.component';
+import BusinessCard from '../components/business-info-card.component';
 
 const BackgroundView = styled(SafeAreaView)`
   background-color: black;
@@ -39,14 +39,17 @@ export const BusinessScreen = ({navigation}) => {
           // snapToOffsets={snapOffsets}
           renderItem={({item}) => {
             return (
-              <View
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('BusinessDetailScreen', {business: item})
+                }
                 style={{
                   width: windowWidth,
                   flex: 1,
                   justifyContent: 'center',
                 }}>
-                <BusinessInfoCard business={item} />
-              </View>
+                <BusinessCard business={item} />
+              </TouchableOpacity>
             );
           }}
           // showsHorizontalScrollIndicator={false}
