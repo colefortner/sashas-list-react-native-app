@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text} from 'react-native';
 import {Card} from 'react-native-paper';
 import styled from 'styled-components/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import firestore from '@react-native-firebase/firestore';
 
 const BusinessCard = ({business = {}}) => {
+  const [user, setUser] = useState();
   const {
     name = 'Pinellas Ale House',
     image = 'https://www.pawbeer.com/wp-content/uploads/Webpage-Header-1024x666.jpg',
@@ -17,6 +19,20 @@ const BusinessCard = ({business = {}}) => {
 
   Ionicons.loadFont().then();
 
+  useEffect(() => {
+    const userDocument = async () => {
+      const getUser = await firestore()
+        .collection('users')
+        .doc('iv0dzkWxMHuRVjWEzRZ9')
+        .get();
+      // console.log(userl);
+      setUser(getUser);
+    };
+    userDocument();
+    console.log('hi');
+  }, []);
+
+  // console.log(user._data.name);
   return (
     <Card
       style={{
@@ -45,6 +61,7 @@ const BusinessCard = ({business = {}}) => {
           </View>
         </View>
       </View>
+      <Text style={{color: 'white'}}>{user._data.another}</Text>
     </Card>
   );
 };

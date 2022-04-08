@@ -7,35 +7,20 @@
  */
 
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import AppNavigator from './src/infrastructure/navigation/app.navigator';
 
 const App = () => {
-  return <AppNavigator />;
+  return (
+    <>
+      <AppNavigator />
+    </>
+  );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'black',
-  },
-});
-
 // const styles = StyleSheet.create({
-//   sectionContainer: {
-//     marginTop: 32,
-//     paddingHorizontal: 24,
-//   },
-//   sectionTitle: {
-//     fontSize: 24,
-//     fontWeight: '600',
-//   },
-//   sectionDescription: {
-//     marginTop: 8,
-//     fontSize: 18,
-//     fontWeight: '400',
-//   },
-//   highlight: {
-//     fontWeight: '700',
+//   container: {
+//     backgroundColor: 'black',
 //   },
 // });
 
