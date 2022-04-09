@@ -43,11 +43,9 @@ const BusinessCard = ({business = {}}) => {
             alignItems: 'center',
           }}>
           <View style={{alignItems: 'baseline', margin: 'auto'}}>
-            <Text style={{color: 'white', fontSize: 25}}>
-              {businessData.name}
-            </Text>
+            <Text style={{color: 'white', fontSize: 25}}>{business.name}</Text>
             <Card.Cover
-              source={{uri: businessData.image}}
+              source={{uri: business.image}}
               style={{minWidth: '90%', borderRadius: 10}}
             />
             <View style={{flexDirection: 'row'}}>
@@ -58,14 +56,12 @@ const BusinessCard = ({business = {}}) => {
                 />
               ))}
             </View>
+            <Text style={{color: 'white', fontSize: 15}}>{business.phone}</Text>
             <Text style={{color: 'white', fontSize: 15}}>
-              {businessData.phone}
+              {business.street}
             </Text>
             <Text style={{color: 'white', fontSize: 15}}>
-              {businessData.street}
-            </Text>
-            <Text style={{color: 'white', fontSize: 15}}>
-              {businessData.city} {businessData.state}, {businessData.zip}
+              {business.city} {business.state}, {business.zip}
             </Text>
           </View>
         </View>

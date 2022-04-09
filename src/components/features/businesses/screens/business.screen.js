@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {SafeAreaView, Text, View, useWindowDimensions} from 'react-native';
 import {FlatList, TouchableOpacity} from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+
 import styled from 'styled-components';
 import {StyleSheet} from 'react-native';
 import {businesses} from '../../../../infrastructure/mock-data/business-mock-data';
@@ -13,6 +15,8 @@ const BackgroundView = styled(SafeAreaView)`
 `;
 
 export const BusinessScreen = ({navigation}) => {
+  const [businessData, setBusinessData] = useState();
+
   const {width: windowWidth} = useWindowDimensions();
 
   const cardWidth = windowWidth / 2 - 20;
@@ -27,13 +31,22 @@ export const BusinessScreen = ({navigation}) => {
     return cardWidth * index + halfGap * index;
   });
 
+  useEffect(() => {
+    const userDocument = async () => {
+      const getBusiness = await firestore().collection('businesses').get();
+      setBusinessData(getBusiness.docs);
+    };
+    userDocument();
+    console.log('hi');
+  }, []);
+  console.log(businessData);
   return (
     // <SafeAreaView>
     <View style={styles.container}>
       <View style={{backgroundColor: 'black'}}>
         <Text>What</Text>
         <FlatList
-          data={businesses}
+          data={businessData}
           viewabilityConfig={{itemVisiblePercentThreshold: 190}}
           renderItem={({item}) => {
             return (
@@ -46,7 +59,7 @@ export const BusinessScreen = ({navigation}) => {
                   flex: 1,
                   justifyContent: 'center',
                 }}>
-                <BusinessCard business={item} />
+                <BusinessCard business={item._data} />
               </TouchableOpacity>
             );
           }}
