@@ -31,12 +31,10 @@ export const BusinessScreen = ({navigation}) => {
     // <SafeAreaView>
     <View style={styles.container}>
       <View style={{backgroundColor: 'black'}}>
-        {/* <BackgroundView> */}
         <Text>What</Text>
         <FlatList
           data={businesses}
           viewabilityConfig={{itemVisiblePercentThreshold: 190}}
-          // snapToOffsets={snapOffsets}
           renderItem={({item}) => {
             return (
               <TouchableOpacity
@@ -52,20 +50,17 @@ export const BusinessScreen = ({navigation}) => {
               </TouchableOpacity>
             );
           }}
-          // showsHorizontalScrollIndicator={false}
           keyExtractor={item => item.id}
           snapToAlignment={'start'}
           decelerationRate={'fast'}
           snapToInterval={windowWidth}
           horizontal={true}
         />
-        {/* </BackgroundView> */}
       </View>
       <View>
         <Text>Test</Text>
       </View>
     </View>
-    // </SafeAreaView>
   );
 };
 

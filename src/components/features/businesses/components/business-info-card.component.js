@@ -7,7 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
 
 const BusinessCard = ({business = {}}) => {
-  const [user, setUser] = useState();
+  const [businessData, setBusinessData] = useState();
   const {
     name = 'Pinellas Ale House',
     image = 'https://www.pawbeer.com/wp-content/uploads/Webpage-Header-1024x666.jpg',
@@ -21,47 +21,55 @@ const BusinessCard = ({business = {}}) => {
 
   useEffect(() => {
     const userDocument = async () => {
-      const getUser = await firestore()
-        .collection('users')
-        .doc('iv0dzkWxMHuRVjWEzRZ9')
+      const getBusiness = await firestore()
+        .collection('businesses')
+        .doc('businesses')
         .get();
-      // console.log(userl);
-      setUser(getUser);
+      setBusinessData(getBusiness._data);
     };
     userDocument();
     console.log('hi');
   }, []);
 
-  // console.log(user._data.name);
   return (
     <Card
       style={{
         backgroundColor: 'black',
       }}>
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <View style={{alignItems: 'baseline', margin: 'auto'}}>
-          <Text style={{color: 'white', fontSize: 25}}>{name}</Text>
-          <Card.Cover
-            source={{uri: image}}
-            style={{minWidth: '90%', borderRadius: 10}}
-          />
-          <Text style={{color: 'white', fontSize: 15}}>{address.street}</Text>
-          {/* <FontAwesome5 name={'paw'} /> */}
-          <View style={{flexDirection: 'row'}}>
-            {ratingArray.map((_, i) => (
-              <Ionicons
-                name={'paw'}
-                style={{color: 'orange', fontSize: 20, padding: 1}}
-              />
-            ))}
+      {businessData && (
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <View style={{alignItems: 'baseline', margin: 'auto'}}>
+            <Text style={{color: 'white', fontSize: 25}}>
+              {businessData.name}
+            </Text>
+            <Card.Cover
+              source={{uri: businessData.image}}
+              style={{minWidth: '90%', borderRadius: 10}}
+            />
+            <View style={{flexDirection: 'row'}}>
+              {ratingArray.map((_, i) => (
+                <Ionicons
+                  name={'paw'}
+                  style={{color: 'orange', fontSize: 20, padding: 1}}
+                />
+              ))}
+            </View>
+            <Text style={{color: 'white', fontSize: 15}}>
+              {businessData.phone}
+            </Text>
+            <Text style={{color: 'white', fontSize: 15}}>
+              {businessData.street}
+            </Text>
+            <Text style={{color: 'white', fontSize: 15}}>
+              {businessData.city} {businessData.state}, {businessData.zip}
+            </Text>
           </View>
         </View>
-      </View>
-      <Text style={{color: 'white'}}>{user._data.another}</Text>
+      )}
     </Card>
   );
 };
