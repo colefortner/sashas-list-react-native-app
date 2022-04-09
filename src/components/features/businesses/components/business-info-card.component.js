@@ -15,7 +15,6 @@ const BusinessCard = ({business = {}}) => {
     address = '1962 1st Ave S.',
     rating = 3,
   } = business;
-
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   Ionicons.loadFont().then();
@@ -35,7 +34,7 @@ const BusinessCard = ({business = {}}) => {
   return (
     <Card
       style={{
-        backgroundColor: 'black',
+        backgroundColor: 'pink',
       }}>
       {businessData && (
         <View
@@ -44,11 +43,11 @@ const BusinessCard = ({business = {}}) => {
             alignItems: 'center',
           }}>
           <View style={{alignItems: 'baseline', margin: 'auto'}}>
-            <Text style={{color: 'white', fontSize: 25}}>{business.name}</Text>
             <Card.Cover
               source={{uri: business.image}}
-              style={{minWidth: '90%', borderRadius: 10}}
+              style={{minWidth: '90%', borderRadius: 5}}
             />
+            <Text style={{fontSize: 25}}>{business.name}</Text>
             <View style={{flexDirection: 'row'}}>
               {ratingArray.map((_, i) => (
                 <Ionicons
@@ -57,13 +56,11 @@ const BusinessCard = ({business = {}}) => {
                 />
               ))}
             </View>
-            <Text style={{color: 'white', fontSize: 15}}>{business.phone}</Text>
-            <Text style={{color: 'white', fontSize: 15}}>
-              {business.street}
-            </Text>
-            <Text style={{color: 'white', fontSize: 15}}>
+            {/* <Text style={{fontSize: 15}}>{business.phone}</Text>
+            <Text style={{fontSize: 15}}>{business.street}</Text>
+            <Text style={{fontSize: 15}}>
               {business.city} {business.state}, {business.zip}
-            </Text>
+            </Text> */}
           </View>
         </View>
       )}
