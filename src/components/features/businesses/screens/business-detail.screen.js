@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {View, Text} from 'react-native';
-import {Card} from 'react-native-paper';
+import {Card, List} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import {Icon} from 'react-native-material-des';
 import BusinessCard from '../components/business-info-card.component';
 
 export const BusinessDetailScreen = ({route}) => {
+  const [hoursExpanded, setHoursExpanded] = useState(false);
+
   const {business} = route.params;
   console.log(business);
 
@@ -51,12 +53,23 @@ export const BusinessDetailScreen = ({route}) => {
           />
           <Text style={{fontSize: 25}}>{business.name}</Text>
         </View>
-        <Text style={{fontSize: 15}}>{business._data.phone}</Text>
+        {/* <Text style={{fontSize: 15}}>{business._data.phone}</Text>
         <Text style={{fontSize: 15}}>{business._data.street}</Text>
         <Text style={{fontSize: 15}}>
           {business._data.city} {business._data.state}, {business._data.zip}
-        </Text>
+        </Text> */}
       </View>
+      <List.Accordion
+        title="Hours"
+        left={props => <List.Icon {...props} icon="clock" />}
+        expanded={hoursExpanded}
+        onPress={() => setHoursExpanded(!hoursExpanded)}>
+        {/* <List.Item title="Eggs" />
+        <List.Item title="Grits" /> */}
+        {business._data.hours.map(item => (
+          <List.Item title={`${item.day} ${item.open} - ${item.close}`} />
+        ))}
+      </List.Accordion>
     </View>
   );
 };
