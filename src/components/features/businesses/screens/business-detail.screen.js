@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {View, Text} from 'react-native';
+import {View, Text, Modal, StyleSheet, Pressable} from 'react-native';
 import {Card, List} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Icon} from 'react-native-material-des';
@@ -59,17 +59,81 @@ export const BusinessDetailScreen = ({route}) => {
           {business._data.city} {business._data.state}, {business._data.zip}
         </Text> */}
       </View>
-      <List.Accordion
-        title="Hours"
-        left={props => <List.Icon {...props} icon="clock" />}
-        expanded={hoursExpanded}
-        onPress={() => setHoursExpanded(!hoursExpanded)}>
-        {/* <List.Item title="Eggs" />
-        <List.Item title="Grits" /> */}
-        {business._data.hours.map(item => (
-          <List.Item title={`${item.day} ${item.open} - ${item.close}`} />
-        ))}
-      </List.Accordion>
+      <View style={styles.centeredView}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={hoursExpanded}
+          onRequestClose={() => {
+            setHoursExpanded(!hoursExpanded);
+          }}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              {/* <Text style={styles.modalText}>Hello World!</Text> */}
+              <Text>Hours</Text>
+              {business._data.hours.map(item => (
+                <Text>
+                  {item.day} {item.open} - {item.close}
+                </Text>
+              ))}
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setHoursExpanded(!hoursExpanded)}>
+                <Text style={styles.textStyle}>Hide Modal</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+        <Pressable
+          style={[styles.button, styles.buttonOpen]}
+          onPress={() => setHoursExpanded(true)}>
+          <Text style={styles.textStyle}>Show Modal</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+});
