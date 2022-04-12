@@ -15,6 +15,7 @@ const BusinessCard = ({business = {}}) => {
     address = '1962 1st Ave S.',
     rating = 3,
   } = business;
+  console.log(business);
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   Ionicons.loadFont().then();
