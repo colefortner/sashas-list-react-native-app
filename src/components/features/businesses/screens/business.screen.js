@@ -1,18 +1,11 @@
 import React, {useEffect, useState} from 'react';
 
-import {SafeAreaView, Text, View, useWindowDimensions} from 'react-native';
+import {Text, View, useWindowDimensions} from 'react-native';
 import {FlatList, TouchableOpacity} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
-
-import styled from 'styled-components';
 import {StyleSheet} from 'react-native';
-import {businesses} from '../../../../infrastructure/mock-data/business-mock-data';
 
 import BusinessCard from '../components/business-info-card.component';
-
-const BackgroundView = styled(SafeAreaView)`
-  background-color: black;
-`;
 
 export const BusinessScreen = ({navigation}) => {
   const [businessData, setBusinessData] = useState();
@@ -40,8 +33,8 @@ export const BusinessScreen = ({navigation}) => {
     console.log('hi');
   }, []);
   console.log(businessData);
+
   return (
-    // <SafeAreaView>
     <View style={styles.container}>
       <View style={{backgroundColor: 'black'}}>
         <Text>What</Text>

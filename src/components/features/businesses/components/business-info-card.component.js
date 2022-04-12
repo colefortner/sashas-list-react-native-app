@@ -5,7 +5,6 @@ import styled from 'styled-components/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
-import {AddData} from '../../../../infrastructure/add-data/add-data';
 
 const BusinessCard = ({business = {}}) => {
   const [businessData, setBusinessData] = useState();
@@ -57,15 +56,9 @@ const BusinessCard = ({business = {}}) => {
                 />
               ))}
             </View>
-            {/* <Text style={{fontSize: 15}}>{business.phone}</Text>
-            <Text style={{fontSize: 15}}>{business.street}</Text>
-            <Text style={{fontSize: 15}}>
-              {business.city} {business.state}, {business.zip}
-            </Text> */}
           </View>
         </View>
       )}
-      {/* <AddData /> */}
     </Card>
   );
 };

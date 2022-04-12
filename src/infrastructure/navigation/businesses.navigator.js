@@ -4,7 +4,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {BusinessScreen} from '../../components/features/businesses/screens/business.screen';
 import {BusinessDetailScreen} from '../../components/features/businesses/screens/business-detail.screen';
-import {BusinessHours} from '../../components/features/businesses/screens/busines-hours';
+import {BusinessHours} from '../../components/features/businesses/screens/business-hours.screen';
+
 const BusinessStack = createNativeStackNavigator();
 
 export const BusinessesNavigator = () => {
