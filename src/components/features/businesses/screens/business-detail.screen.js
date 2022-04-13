@@ -59,6 +59,18 @@ export const BusinessDetailScreen = ({navigation, route}) => {
         }}>
         <Text style={{color: 'white'}}>Hours</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('BusinessMapScreen', {
+            businessCoordinates: business._data.coordinates,
+          })
+        }
+        style={{
+          backgroundColor: 'blue',
+          width: 45,
+        }}>
+        <Text style={{color: 'white'}}>Map</Text>
+      </TouchableOpacity>
     </View>
   );
 };
