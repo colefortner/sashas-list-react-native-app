@@ -9,11 +9,14 @@ export const BusinessMapScreen = ({route}) => {
   return (
     <MapView
       style={{flex: 1}}
+      zoomEnabled={true}
+      scrollEnabled={true}
+      zoomControlEnabled={true}
       initialRegion={{
-        latitude: 27.7699047,
-        longitude: -82.66293,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitude: businessCoordinates.lat,
+        longitude: businessCoordinates.lng,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
       }}>
       <Marker
         coordinate={{

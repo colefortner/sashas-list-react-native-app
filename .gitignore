@@ -55,6 +55,6 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
-
+idea-paletter.js
 # CocoaPods
 /ios/Pods/
